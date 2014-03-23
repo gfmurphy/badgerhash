@@ -4,7 +4,7 @@ require "nokogiri"
 module Badgerhash
   module Parsers
     module Nokogiri
-      class Document < ::Nokogiri::XML::SAX::Document
+      class SaxDocument < ::Nokogiri::XML::SAX::Document
         extend Forwardable
 
         def_delegator :@handler, :text, :characters

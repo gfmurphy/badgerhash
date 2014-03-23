@@ -3,9 +3,9 @@ require File.expand_path "../../../spec_helper.rb", __FILE__
 module Badgerhash
   module Parsers
     module Nokogiri
-      describe Document do
+      describe SaxDocument do
         let(:handler) { double(:handler) }
-        subject(:document) { Document.new(handler) }
+        subject(:document) { SaxDocument.new(handler) }
 
         describe ".parse" do
           let(:parser) { double(:parser) }
@@ -15,7 +15,7 @@ module Badgerhash
             expect(::Nokogiri::XML::SAX::Parser).to receive(:new)
               .and_return(parser)
             expect(parser).to receive(:parse).with(io)
-            Document.parse(handler, io)
+            SaxDocument.parse(handler, io)
           end
         end
 
