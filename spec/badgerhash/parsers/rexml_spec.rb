@@ -11,7 +11,7 @@ module Badgerhash
           let(:parser) { double(:parser) }
           let(:io)     { double(:io) }
 
-          it "delegates to the Nokogiri XML SAX parser" do
+          it "delegates to the REXML sax parser" do
             expect(::REXML::Parsers::StreamParser).to receive(:new)
               .and_return(parser)
             expect(parser).to receive(:parse)
