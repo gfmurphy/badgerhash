@@ -1,5 +1,4 @@
 require "badgerhash/handlers/sax_handler"
-require "badgerhash/parsers/nokogiri"
 require "badgerhash/parsers/rexml"
 require "badgerhash/version"
 
