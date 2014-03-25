@@ -17,7 +17,7 @@ describe Badgerhash do
   describe ".sax_parser" do
     it "uses the nokogiri parser as default" do
       expect(Badgerhash.sax_parser)
-        .to eq(Badgerhash::Parsers::Nokogiri::SaxDocument)
+        .to eq(Badgerhash::Parsers::REXML::SaxDocument)
     end
   end
 end
