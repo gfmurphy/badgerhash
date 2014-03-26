@@ -6,7 +6,7 @@ module Badgerhash
 
     def to_badgerfish
       @parser.parse(@handler, @io)
-      @handler.node
+      @handler.node.dup
     end
 
     def initialize(handler, parser, io)
