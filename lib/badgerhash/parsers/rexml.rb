@@ -13,7 +13,7 @@ module Badgerhash
         def_delegator  :@handler, :end_element, :tag_end
 
         def self.parse(handler, io)
-          ::REXML::Parsers::StreamParser.new(io, new(handler)).parse
+          ::REXML::Document.parse_stream(io, new(handler))
         end
 
         def initialize(handler)
