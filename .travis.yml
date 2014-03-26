@@ -1,0 +1,12 @@
+language: ruby
+rvm:
+  - "1.9.3"
+  - "2.0.0"
+  - "2.1.1"
+branches:
+  only:
+    - master
+    - develop
+    - /^release_.*$/
+env: CODECLIMATE_REPO_TOKEN=aea115f723bc77a06020ffdf2d470b5aaffeda86e5ec05574d8379d2b2e3b4bb
+script: bundle exec rspec spec
