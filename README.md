@@ -1,4 +1,6 @@
 # Badgerhash
+[![Build Status](https://travis-ci.org/gfmurphy/badgerhash.svg?branch=develop)](https://travis-ci.org/gfmurphy/badgerhash)
+[![Code Climate](https://codeclimate.com/github/gfmurphy/badgerhash.png)](https://codeclimate.com/github/gfmurphy/badgerhash)
 
 TODO: Write a gem description
 
