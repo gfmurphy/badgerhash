@@ -5,7 +5,7 @@ describe Badgerhash do
     let(:parser) { double(:parser) }
 
     after :each do
-      reset_class_variables Badgerhash
+      reset_instance_variables Badgerhash
     end
 
     it "sets the parser" do
