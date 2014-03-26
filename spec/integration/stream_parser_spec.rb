@@ -1,13 +1,13 @@
 require File.expand_path "../../spec_helper.rb", __FILE__
 
 describe "Parsing XML Stream", integration: true do
-  subject(:xml_stream) { Badgerhash::XmlStream.create }
+  subject(:xml_stream) { Badgerhash::XmlStream.create(xml) }
 
   context "with simple document" do
     let(:xml) { StringIO.new("<alice>bob</alice>") }
 
     it "parses document correctly" do
-      expect(xml_stream.to_badgerfish(xml)).to eq({"alice" => {"\$" => "bob"}})
+      expect(xml_stream.to_badgerfish).to eq({"alice" => {"\$" => "bob"}})
     end
   end
 
@@ -22,7 +22,7 @@ describe "Parsing XML Stream", integration: true do
     let(:xml) { StringIO.new(xml_str) }
 
     it "compresses the whitespace" do
-      expect(xml_stream.to_badgerfish(xml)).to eq({"alice" => {"\$" => "bob"}})
+      expect(xml_stream.to_badgerfish).to eq({"alice" => {"\$" => "bob"}})
     end
   end
 
@@ -33,7 +33,7 @@ describe "Parsing XML Stream", integration: true do
           "david" => { "\$" => "edgar"}}} }
 
     it "parses document correctly" do
-      expect(xml_stream.to_badgerfish(xml)).to eq(expected)
+      expect(xml_stream.to_badgerfish).to eq(expected)
     end
   end
 
@@ -44,7 +44,7 @@ describe "Parsing XML Stream", integration: true do
             {"\$" => "david" }]}} }
 
     it "parses document correctly" do
-      expect(xml_stream.to_badgerfish(xml)).to eq(expected)
+      expect(xml_stream.to_badgerfish).to eq(expected)
     end
   end
 
@@ -53,7 +53,7 @@ describe "Parsing XML Stream", integration: true do
     let(:expected) { {"alice" => { "\$" => "bob", "@charlie" => "david" } } }
 
     it "add attribute as properties begining with '@'" do
-      expect(xml_stream.to_badgerfish(xml)).to eq(expected)
+      expect(xml_stream.to_badgerfish).to eq(expected)
     end
   end
 
@@ -63,7 +63,7 @@ describe "Parsing XML Stream", integration: true do
             "\$" => "http:\/\/some-namespace"}} } }
 
     it "places it in the @xmlns.$ property" do
-      expect(xml_stream.to_badgerfish(xml)).to eq(expected)
+      expect(xml_stream.to_badgerfish).to eq(expected)
     end
   end
 
@@ -75,7 +75,7 @@ describe "Parsing XML Stream", integration: true do
             "charlie" => "http:\/\/some-other-namespace" }}} }
 
     it "places them in properties of @xmlns" do
-      expect(xml_stream.to_badgerfish(xml)).to eq(expected)
+      expect(xml_stream.to_badgerfish).to eq(expected)
     end
   end
 
@@ -94,7 +94,7 @@ describe "Parsing XML Stream", integration: true do
             "\$" => "http:\/\/some-namespace"}}} }
 
     it "add them as properties" do
-      expect(xml_stream.to_badgerfish(xml)).to eq(expected)
+      expect(xml_stream.to_badgerfish).to eq(expected)
     end
   end
 end
