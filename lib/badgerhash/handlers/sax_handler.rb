@@ -37,7 +37,8 @@ module Badgerhash
       end
 
       def text(value)
-        @node["$"] = value
+        value = value.to_s.strip
+        @node["$"] = value unless value.empty?
         self
       end
 

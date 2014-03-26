@@ -11,6 +11,21 @@ describe "Parsing XML Stream", integration: true do
     end
   end
 
+  context "with whitespace in nodes" do
+    let(:xml_str) {
+      <<-XML
+      <alice>
+        bob
+      </alice>
+      XML
+    }
+    let(:xml) { StringIO.new(xml_str) }
+
+    it "compresses the whitespace" do
+      expect(xml_stream.to_badgerfish(xml)).to eq({"alice" => {"\$" => "bob"}})
+    end
+  end
+
   context "with nested elements" do
     let(:xml_str) { "<alice><bob>charlie</bob><david>edgar</david></alice>" }
     let(:xml) { StringIO.new(xml_str) }

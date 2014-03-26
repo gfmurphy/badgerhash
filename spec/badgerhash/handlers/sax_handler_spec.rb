@@ -90,6 +90,16 @@ module Badgerhash
           handler.text "foo"
           expect(handler.node).to eq({"\$" => "foo"})
         end
+
+        it "compresses leading whitespace" do
+          handler.text "\nfoo"
+          expect(handler.node).to eq({"\$" => "foo"})
+        end
+
+        it "compresses trailing whitespace" do
+          handler.text "foo\n"
+          expect(handler.node).to eq({"\$" => "foo"})
+        end
       end
 
       describe "#cdata" do
