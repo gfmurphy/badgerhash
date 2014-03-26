@@ -30,12 +30,13 @@ Or install it yourself as:
 ### Generating a BadgerFish Hash Using a Stream Parser
 
 ```ruby
-require "badgerfish"
+require "badgerhash"
+require "stringio"
 
 xml = StringIO.new("<alice>bob</alice>")
-xml_stream =  BadgerHash::XmlStream.create
+xml_stream =  Badgerhash::XmlStream.create(xml)
 
-puts xml_stream.to_badgerfish(xml).inspect
+puts xml_stream.to_badgerfish.inspect
 ```
 
 ## Contributing
