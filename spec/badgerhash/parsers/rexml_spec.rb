@@ -3,9 +3,9 @@ require File.expand_path "../../../spec_helper.rb", __FILE__
 module Badgerhash
   module Parsers
     module REXML
-      describe SaxDocument do
+      describe StreamParser do
         let(:handler) { double(:handler) }
-        subject(:document) { SaxDocument.new(handler) }
+        subject(:document) { StreamParser.new(handler) }
 
         describe ".parse" do
           let(:parser) { double(:parser) }
@@ -13,7 +13,7 @@ module Badgerhash
 
           it "delegates to the REXML sax parser" do
             expect(::REXML::Document).to receive(:parse_stream)
-            SaxDocument.parse(handler, io)
+            StreamParser.parse(handler, io)
           end
         end
 

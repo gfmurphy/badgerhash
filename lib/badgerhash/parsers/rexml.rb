@@ -5,7 +5,7 @@ require "rexml/streamlistener"
 module Badgerhash
   module Parsers
     module REXML
-      # SaxDocument provides an implmentation of the required
+      # StreamParser provides an implmentation of the required
       # public interface for a parser that is to be used when parsing
       # an XmlStream. An implementation is required to provide a parse method
       # that accepts a Badgerhash::Handler::SaxHandler and an IO object.
@@ -14,7 +14,7 @@ module Badgerhash
       # implementation for other sax parsers.
       #
       # @api private
-      class SaxDocument
+      class StreamParser
         include ::REXML::StreamListener
         extend Forwardable
 
