@@ -1,3 +1,4 @@
+require "badgerhash/handlers/node_processing"
 require "badgerhash/handlers/sax_handler"
 require "badgerhash/parsers/rexml"
 require "badgerhash/version"
