@@ -7,7 +7,7 @@ require "badgerhash/xml_stream"
 # @api public
 module Badgerhash
   # Class of the default sax parser implementation
-  DEFAULT_SAX_PARSER = Parsers::REXML::SaxDocument
+  DEFAULT_SAX_PARSER = Parsers::REXML::StreamParser
 
   # Set the sax parser for the module
   #
