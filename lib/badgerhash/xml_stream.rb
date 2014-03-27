@@ -21,20 +21,20 @@ module Badgerhash
     # @return [Hash] the Badgerfish hash
     # @api public
     def to_badgerfish
-      @parser.parse(@handler, @io)
+      @parser.parse(@handler, @xml)
       @handler.node.dup
     end
 
     # Initialize an XmlStream object.
     #
     # @param handler [Badgerhash::Handlers::SaxHandler] the handler
-    # @param parser  [Class] a parser conforming to the required interface.
-    # @param io [IO] object containing the XML to be parsed.
+    # @param parser  [Object] a parser conforming to the required interface
+    # @param xml [IO] object containing the XML to be parsed.
     # @api private
-    def initialize(handler, parser, io)
+    def initialize(handler, parser, xml)
       @handler = handler
       @parser  = parser
-      @io      = io
+      @xml     = xml
     end
   end
 end
