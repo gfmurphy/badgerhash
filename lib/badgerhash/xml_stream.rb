@@ -1,16 +1,19 @@
+require "stringio"
+
 module Badgerhash
   # Converts XML as IO to a Badgerfish Hash using a stream parser
   class XmlStream
     # Create a properly initialized Badgerhash::XmlStream object
     #
-    # @param io [IO] an object containing the XML to be parsed
+    # @param xml [IO, String] an object containing the XML to be parsed
     # @example
     #   io = StringIO.new("<alice>bob</alice>")
     #   Badgerhash::XmlStream.create(io)
     # @return [Badgerhash::XmlStream] the XmlStream
     # @api public
-    def self.create(io)
-      new(Handlers::SaxHandler.new, Badgerhash.sax_parser, io)
+    def self.create(xml)
+      xml = StringIO.new(xml) if xml.is_a?(String)
+      new(Handlers::SaxHandler.new, Badgerhash.sax_parser, xml)
     end
 
     # The Badgerfish representation of the XML

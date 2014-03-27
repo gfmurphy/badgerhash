@@ -5,6 +5,11 @@ module Badgerhash
     let(:io) { double(:io) }
 
     describe ".create" do
+      it "creates a new XmlStream from String" do
+        expect(XmlStream).to receive(:new)
+        XmlStream.create("<alice>bob</alice>")
+      end
+
       it "creates a new XmlStream" do
         expect(XmlStream).to receive(:new)
         XmlStream.create(io)

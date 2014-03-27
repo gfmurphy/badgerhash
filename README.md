@@ -35,8 +35,10 @@ require "stringio"
 
 xml = StringIO.new("<alice>bob</alice>")
 xml_stream =  Badgerhash::XmlStream.create(xml)
+xml_stream.to_badgerfish *=> {"alice" => {"$" => "bob"}}*
 
-puts xml_stream.to_badgerfish.inspect
+xml_stream = Badgerhash::XmlStream.create("<alice>bob</alice>")
+xml_stream.to_badgerfish *=> {"alic" => {"$" => "bob"}}*
 ```
 
 ## Contributing
