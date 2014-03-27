@@ -1,5 +1,3 @@
-require "stringio"
-
 module Badgerhash
   # Converts XML as IO to a Badgerfish Hash using a stream parser
   class XmlStream
@@ -12,7 +10,6 @@ module Badgerhash
     # @return [Badgerhash::XmlStream] the XmlStream
     # @api public
     def self.create(xml)
-      xml = StringIO.new(xml) if xml.is_a?(String)
       new(Handlers::SaxHandler.new, Badgerhash.sax_parser, xml)
     end
 
