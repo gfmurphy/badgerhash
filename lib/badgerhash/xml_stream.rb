@@ -21,8 +21,8 @@ module Badgerhash
     # @return [Hash] the Badgerfish hash
     # @api public
     def to_badgerfish
-      @parser.parse(@handler, @xml)
-      @handler.node.dup
+      @parser.parse(@handler, @xml) unless @node
+      @node ||= @handler.node.dup
     end
 
     # Initialize an XmlStream object.
