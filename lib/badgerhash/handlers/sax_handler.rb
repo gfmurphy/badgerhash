@@ -1,8 +1,12 @@
+require "badgerhash/handlers/node_processing"
+
 module Badgerhash
   module Handlers
     # SaxHandler that is passed to a sax parser implementation
     # @api public
     class SaxHandler
+      include Handlers::NodeProcessing
+
       attr_reader :node
 
       # Initialize the SaxHandler
@@ -26,14 +30,7 @@ module Badgerhash
         name = name.to_s
         element = node_namespaces
 
-        @node[name] = case @node[name]
-                      when nil
-                        element
-                      when Hash
-                        [@node[name], element]
-                      else
-                        @node[name] << element
-                      end
+        @node = update_node(@node, name, element)
 
         @parents << @node
         @node = element
@@ -49,12 +46,7 @@ module Badgerhash
       #   handler.attr "foo", "bar"  => handler
       # @return [SaxHandler]
       def attr(name, value)
-        if name =~ /^xmlns(:?(.*))/i
-          key = $2.to_s.length > 0 ? $2 : "$"
-          (@node["@xmlns"] ||= {})[key] = value
-        else
-          @node["@#{name}"] = value
-        end
+        @node = add_attribute(@node, name, value)
         self
       end
 

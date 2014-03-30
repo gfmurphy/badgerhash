@@ -5,6 +5,38 @@ require "rexml/streamlistener"
 module Badgerhash
   module Parsers
     module REXML
+      class DocumentParser
+        def self.parse(xml)
+          XmlNode.new ::REXML::Document.new(xml, compress_whitespace: :all).root
+        end
+
+        class XmlNode
+          extend Forwardable
+
+          def_delegator :@doc, :text
+
+          def initialize(rexml_document)
+            @doc = rexml_document
+          end
+
+          def children
+            @children ||= @doc.children.map { |node| XmlNode.new(node) }
+          end
+
+          def attributes
+            @attributes ||= @doc.attributes.reduce({}) { |attr, value|
+              name, value = *value
+              attr[name] = value
+              attr
+            }
+          end
+
+          def text?
+            @doc.node_type == :text
+          end
+        end
+      end
+
       # StreamParser provides an implmentation of the required
       # public interface for a parser that is to be used when parsing
       # an XmlStream. An implementation is required to provide a parse method
