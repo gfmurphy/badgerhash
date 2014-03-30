@@ -46,8 +46,15 @@ module Badgerhash
 
         describe "#text" do
           it "delegates to document" do
-            expect(rexml_document).to receive(:text).and_return "foo"
+            expect(rexml_document).to receive(:value).and_return "foo"
             expect(xml_node.text).to eq("foo")
+          end
+        end
+
+        describe "#name" do
+          it "delegates to document" do
+            expect(rexml_document).to receive(:name).and_return "foo"
+            expect(rexml_document.name).to eq("foo")
           end
         end
 

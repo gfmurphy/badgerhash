@@ -7,13 +7,14 @@ module Badgerhash
     module REXML
       class DocumentParser
         def self.parse(xml)
-          XmlNode.new ::REXML::Document.new(xml, compress_whitespace: :all).root
+          XmlNode.new ::REXML::Document.new(xml, compress_whitespace: :all)
         end
 
         class XmlNode
           extend Forwardable
 
-          def_delegator :@doc, :text
+          def_delegator :@doc, :value, :text
+          def_delegator :@doc, :name
 
           def initialize(rexml_document)
             @doc = rexml_document

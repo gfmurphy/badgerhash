@@ -33,7 +33,7 @@ module Badgerhash
               node.fetch("@xmlns", {}))
           end
 
-          node = update_node(node, key, value)
+          update_node(node, key, value)
         end
       end
     end
