@@ -9,9 +9,10 @@ require "badgerhash/version"
 # Convert XML to Ruby Hash using Badgerfish convention: http://badgerfish.ning.com/
 # @api public
 module Badgerhash
-  # Class of the default sax parser implementation
+  # The default sax parser implementation
   DEFAULT_SAX_PARSER = Parsers::REXML::StreamParser
 
+  # The default dom parser implementation
   DEFAULT_DOM_PARSER = Parsers::REXML::DocumentParser
 
   # Set the sax parser for the module
@@ -45,11 +46,11 @@ module Badgerhash
     @dom_parser = parser
   end
 
-  # The current sax parser implementation
+  # The current dom parser implementation
   #
   # @example
-  #   Badgerhash.sax_parser => Parsers::REXML::DocumentParser
-  # @return [Object] the current sax parser implementation
+  #   Badgerhash.dom_parser => Parsers::REXML::DocumentParser
+  # @return [Object] the current dom parser implementation
   def self.dom_parser
     @dom_parser || DEFAULT_DOM_PARSER
   end
