@@ -6,12 +6,12 @@ module Badgerhash
 
     describe ".create" do
       it "creates a new XmlStream from String" do
-        expect(XmlStream).to receive(:new)
+        expect(XmlStream).to receive(:new).and_call_original
         XmlStream.create("<alice>bob</alice>")
       end
 
       it "creates a new XmlStream" do
-        expect(XmlStream).to receive(:new)
+        expect(XmlStream).to receive(:new).and_call_original
         XmlStream.create(io)
       end
     end

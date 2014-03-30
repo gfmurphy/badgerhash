@@ -1,3 +1,5 @@
+require "badgerhash/handlers/node_processing"
+
 module Badgerhash
   module Handlers
     # SaxHandler that is passed to a sax parser implementation
