@@ -14,7 +14,7 @@ module Badgerhash
           extend Forwardable
 
           def_delegator :@doc, :value, :text
-          def_delegator :@doc, :name
+          def_delegator :@doc, :expanded_name, :name
 
           def initialize(rexml_document)
             @doc = rexml_document

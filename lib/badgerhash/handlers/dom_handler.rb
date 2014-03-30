@@ -26,14 +26,15 @@ module Badgerhash
         }
 
         xml_node.children.reduce(node) do |node, child|
+          # TODO - this is nasty. Refactor this.
           if child.text?
-            key, value = "$", child.text
+            key, value = "$", child.text.to_s.strip
+            value.empty? ? node : update_node(node, key, value)
           else
             key, value = child.name, process_node(child,
               node.fetch("@xmlns", {}))
+            update_node(node, key, value)
           end
-
-          update_node(node, key, value)
         end
       end
     end
