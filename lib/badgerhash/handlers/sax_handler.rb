@@ -7,6 +7,9 @@ module Badgerhash
     class SaxHandler
       include Handlers::NodeProcessing
 
+      # The current node
+      #
+      # @returns [Hash] the current nodes children and attributes
       attr_reader :node
 
       # Initialize the SaxHandler
