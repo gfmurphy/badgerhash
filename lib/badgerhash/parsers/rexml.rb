@@ -99,6 +99,11 @@ module Badgerhash
           @handler = handler
         end
 
+        # Tell the handler that a new tag has been encountered in the stream
+        #
+        # @param name [String] the name of the attribute
+        # @param attributes [Array] an Array of tag attributes
+        # @return void
         def tag_start(name, attributes=[])
           @handler.start_element name
           Array(attributes).each do |attr|
