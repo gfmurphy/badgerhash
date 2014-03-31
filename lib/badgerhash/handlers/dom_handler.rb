@@ -13,9 +13,11 @@ module Badgerhash
       def initialize
       end
 
-      # Convert the given node to a badgerfish Hash
+      # Convert the given node to a badgerfish Hash recursively
       #
-      # @param xml_node [Object] the xml_node to be processed.
+      # @param xml_node [Object] the xml_node to be processed
+      # @param namespaces [Hash] the parent namespaces of the element
+      # @return [Hash] the new Hash containing the elements children and attributes
       def process_node(xml_node, namespaces={})
         namespaces = Hash[Array(namespaces)]
         node = {}
